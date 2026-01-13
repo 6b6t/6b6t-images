@@ -4,7 +4,7 @@ FROM eclipse-temurin:25
 RUN groupadd -g 1001 runner && \
     useradd -u 1001 -g runner -s /bin/sh -m runner && \
     apt-get update && \
-    apt-get install -y dumb-init unzip zip git curl python3 python3-pip ca-certificates gnupg jq tar socat conntrack iptables git htop fastfetch nano wget tcpdump
+    apt-get install -y dumb-init unzip zip git curl python3 python3-pip ca-certificates gnupg jq tar socat conntrack iptables git htop nano wget tcpdump
 
 # Use the runner's home data directory as our work directory
 WORKDIR /home/runner/data
