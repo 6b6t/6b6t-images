@@ -17,4 +17,4 @@ USER runner
 
 # Start the process using dumb-init
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["/bin/sh", "/home/runner/data/start.sh"]
+CMD ["/bin/bash", "/home/runner/data/start.sh"]
