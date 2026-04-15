@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:trixie-20260406
 
 # Setup groups and install dumb init
 RUN apt-get update && \
