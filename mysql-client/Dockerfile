@@ -1,4 +1,4 @@
-FROM debian:bookworm-20260421
+FROM debian:bookworm-20260505
 
 # Setup groups and install dumb init
 RUN apt-get update && \
