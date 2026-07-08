@@ -4,7 +4,7 @@ FROM eclipse-temurin:25
 RUN groupadd -g 1001 runner && \
     useradd -u 1001 -g runner -s /bin/sh -m runner && \
     apt-get update && \
-    apt-get install -y dumb-init unzip zip git curl python3 ca-certificates gnupg jq tar socat conntrack iptables htop nano wget tcpdump rsync libhsdis0-fcml && \
+    apt-get install -y dumb-init unzip zip git curl python3 ca-certificates gnupg jq tar socat conntrack iptables htop nano wget tcpdump rsync libhsdis0-fcml libnuma1 && \
     ln -sf /usr/lib/x86_64-linux-gnu/libhsdis.so.0 "$JAVA_HOME/lib/server/hsdis-amd64.so"
 
 # Install mc-monitor for health checks
