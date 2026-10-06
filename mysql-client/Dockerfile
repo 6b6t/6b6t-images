@@ -1,4 +1,4 @@
-FROM debian:12
+FROM debian:13
 
 # Setup groups and install dumb init
 RUN apt-get update && \
