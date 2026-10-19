@@ -1,0 +1,5 @@
+--- a/fh_cache.c
++++ b/fh_cache.c
+@@ -30 +30 @@
+-#define CACHE_ENTRIES	4096
++#define CACHE_ENTRIES	32768

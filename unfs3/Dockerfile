@@ -5,10 +5,12 @@ ARG UNFS3_SHA256=42ef63cd949b65a4ead30bee269703059a8c4269bef6aa1533215ad1c2a26d6
 
 RUN apk add --no-cache build-base flex bison libtirpc-dev pkgconf curl
 WORKDIR /src
+COPY filehandle-cache.patch /tmp/filehandle-cache.patch
 RUN curl --fail --show-error --location --output unfs3.tar.gz \
       "https://github.com/unfs3/unfs3/releases/download/unfs3-${UNFS3_VERSION}/unfs3-${UNFS3_VERSION}.tar.gz" \
     && echo "${UNFS3_SHA256}  unfs3.tar.gz" | sha256sum -c - \
     && tar -xzf unfs3.tar.gz --strip-components=1 \
+    && patch --batch --forward --fuzz=0 --strip=1 --input=/tmp/filehandle-cache.patch \
     && ./configure --prefix=/usr \
     && make -j"$(getconf _NPROCESSORS_ONLN)" \
     && strip unfsd
