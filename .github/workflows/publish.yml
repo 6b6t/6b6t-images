@@ -4,9 +4,17 @@ on:
   push:
     branches:
       - main
+    paths:
+      - java/**
+      - mysql-client/**
   pull_request:
     branches:
       - main
+    paths:
+      - java/**
+      - mysql-client/**
+      - .github/workflows/publish.yml
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io

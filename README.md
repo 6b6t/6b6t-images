@@ -35,6 +35,11 @@ Features:
 
 Set `MYSQL_CLIENT_MSG` environment variable to customize the connection hint displayed on startup.
 
+### UNFS3
+
+Userspace NFSv3 server for existing server data, without privileged container mode.
+See the [UNFS3 configuration and test instructions](unfs3/README.md).
+
 ## License
 
 MIT
