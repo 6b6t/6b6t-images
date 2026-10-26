@@ -6,14 +6,14 @@ Docker images used by 6b6t infrastructure.
 
 ### Java
 
-Base image for running Java applications with Eclipse Temurin 25.
+Base image for running Java applications with Eclipse Temurin 27.
 
 ```bash
 docker pull ghcr.io/6b6t/java:latest
 ```
 
 Features:
-- Eclipse Temurin 25
+- Eclipse Temurin 27
 - dumb-init for proper signal handling
 - Common utilities: git, curl, unzip, zip, python3
 - mcstatus for Minecraft server status checks

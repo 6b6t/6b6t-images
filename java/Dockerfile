@@ -1,4 +1,4 @@
-FROM eclipse-temurin:25
+FROM eclipse-temurin:27
 
 # Setup groups and install dumb init
 RUN groupadd -g 1001 runner && \
