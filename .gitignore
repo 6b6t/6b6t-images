@@ -1,0 +1,4 @@
+# Share the project icon while keeping local IDE settings private.
+!/.idea/
+/.idea/*
+!/.idea/icon.svg
