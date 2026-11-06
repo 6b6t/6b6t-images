@@ -1,4 +1,4 @@
-FROM alpine:3.24@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a AS build
+FROM alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a AS build
 
 ARG UNFS3_VERSION=0.11.0
 ARG UNFS3_SHA256=42ef63cd949b65a4ead30bee269703059a8c4269bef6aa1533215ad1c2a26d6f
@@ -15,7 +15,7 @@ RUN curl --fail --show-error --location --output unfs3.tar.gz \
     && make -j"$(getconf _NPROCESSORS_ONLN)" \
     && strip unfsd
 
-FROM alpine:3.24@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a
+FROM alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a
 
 LABEL org.opencontainers.image.source="https://github.com/6b6t/6b6t-images" \
       org.opencontainers.image.description="Userspace NFSv3 server for 6b6t file exports" \
