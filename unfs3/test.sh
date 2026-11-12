@@ -41,7 +41,7 @@ cache_stats=""
 read_cache_stats() {
   local previous_stats=$cache_stats
   docker kill --signal=USR1 "$name" >/dev/null
-  for attempt in {1..50}; do
+  for _attempt in {1..50}; do
     cache_stats=$(docker logs "$name" 2>&1 | awk '/^fh entries / { line = $0 } END { print line }')
     [[ -n "$cache_stats" && "$cache_stats" != "$previous_stats" ]] && break
     sleep 0.1
