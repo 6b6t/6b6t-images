@@ -7,6 +7,7 @@ on:
     paths:
       - java/**
       - mysql-client/**
+      - .github/workflows/publish.yml
   pull_request:
     branches:
       - main
@@ -58,12 +59,28 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=sha,prefix=
 
-      - name: Build and push
+      - name: Build image for tests
         uses: docker/build-push-action@v7
         with:
           context: ${{ matrix.image.context }}
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          pull: true
+          no-cache: true
+          load: true
+          tags: 6b6t-${{ matrix.image.name }}:test
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Test Java4Shell mitigation
+        if: matrix.image.name == 'java'
+        run: bash java/test.sh 6b6t-java:test
+
+      - name: Publish tested image
+        if: github.event_name != 'pull_request'
+        uses: docker/build-push-action@v7
+        with:
+          context: ${{ matrix.image.context }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha

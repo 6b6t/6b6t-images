@@ -19,6 +19,20 @@ Features:
 - mcstatus for Minecraft server status checks
 - Non-root user (`runner`) for security
 
+The image sets `JDK_JAVA_OPTIONS=-XX:-UseBASE64Intrinsics` to mitigate [Java4Shell (CVE-2026-114938)](https://calif.io/java4shell/).
+This disables the affected Base64 optimization until Temurin publishes a patched Java 27 release.
+Keep this flag if you override `JDK_JAVA_OPTIONS`.
+Workloads can set `JAVA_TOOL_OPTIONS` without removing the mitigation.
+
+Build the image and test the mitigation:
+
+```bash
+docker build --pull --no-cache --tag 6b6t-java:test java
+bash java/test.sh 6b6t-java:test
+```
+
+The publishing workflow runs this test before it publishes the Java image.
+
 ### MySQL Client
 
 Image with MariaDB client for database operations.
@@ -28,7 +42,7 @@ docker pull ghcr.io/6b6t/mysql-client:latest
 ```
 
 Features:
-- Debian Bookworm base
+- Debian Trixie base
 - MariaDB client
 - dumb-init for proper signal handling
 - Common utilities: git, curl, unzip, zip, python3

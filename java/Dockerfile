@@ -1,4 +1,8 @@
-FROM eclipse-temurin:27
+FROM eclipse-temurin:27-jdk-resolute@sha256:653c788ead947fce2b3452b434f25f69adf9b60c9f41e4639b3592caa719f683
+
+# Mitigate CVE-2026-114938 until Temurin publishes a patched Java 27 release.
+# Keep this separate from the JAVA_TOOL_OPTIONS set by production workloads.
+ENV JDK_JAVA_OPTIONS="-XX:-UseBASE64Intrinsics"
 
 # Setup groups and install dumb init
 RUN groupadd -g 1001 runner && \

@@ -29,6 +29,8 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: ./unfs3
+          pull: true
+          no-cache: true
           load: true
           tags: unfs3:test
           cache-from: type=gha,scope=unfs3
