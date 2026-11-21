@@ -1,4 +1,4 @@
-FROM eclipse-temurin:27-jdk-resolute@sha256:653c788ead947fce2b3452b434f25f69adf9b60c9f41e4639b3592caa719f683
+FROM eclipse-temurin:27-jdk-resolute@sha256:bbd3c8267b6fdeba3502b71879255cfbfde05bec3dbe9de655ac5c007332752e
 
 # Mitigate CVE-2026-114938 until Temurin publishes a patched Java 27 release.
 # Keep this separate from the JAVA_TOOL_OPTIONS set by production workloads.
