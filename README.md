@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This repository has moved to **[git.6b6t.org/6b6t/6b6t-images](https://git.6b6t.org/6b6t/6b6t-images)**. This GitHub copy is archived and no longer updated.
+
 # 6b6t-images
 
 Docker images used by 6b6t infrastructure.
